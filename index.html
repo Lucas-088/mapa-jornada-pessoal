@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DevStep – Wireframe</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --bg: #f8fafc;
+      --text: #1e293b;
+      --border: #e2e8f0;
+      --muted: #64748b;
+    }
+
+    body { 
+      font-family: 'Segoe UI', sans-serif; 
+      margin: 0; 
+      display: flex; 
+      flex-direction: column;
+      align-items: center; 
+      background: #f0f2f5;
+      padding-top: 40px;
+    }
+
+    /* Estrutura do Celular */
+    .phone {
+      width: 360px; 
+      height: 640px;
+      background: #fff;
+      border: 12px solid #333; 
+      border-radius: 40px;
+      padding: 24px; 
+      box-shadow: 0 20px 25px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Topbar */
+    .topbar { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      margin-bottom: 20px;
+    }
+
+    .screen { display: none; flex-direction: column; height: 100%; }
+    .screen.active { display: flex; }
+
+    /* Caixa Branca com Sombra (Estilo Card) */
+    .box { 
+      border: 1px solid var(--border); 
+      padding: 20px; 
+      border-radius: 16px; 
+      margin-bottom: 16px; 
+      background: #fff;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+
+    /* Alinhamento das Tarefas (Texto Esquerda, Checkbox Direita) */
+    .task-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .task-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    /* Alinhamento dos Botões no Rodapé */
+    .row { 
+      display: flex; 
+      gap: 12px; 
+      margin-top: auto; /* Empurra para o final da tela */
+      padding-bottom: 10px; 
+    }
+    
+    .btn { 
+      flex: 1;
+      padding: 14px; 
+      border: 1px solid var(--border); 
+      background: #fff; 
+      border-radius: 12px; 
+      cursor: pointer; 
+      font-weight: 600;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .btn.primary { 
+      background: var(--primary); 
+      color: white; 
+      border: none;
+    }
+
+    /* Barra de Progresso */
+    .progress-container {
+      margin-top: 20px;
+    }
+
+    .progress-bg { 
+      height: 8px; 
+      background: #eff6ff; 
+      border-radius: 10px; 
+      overflow: hidden; 
+      margin-top: 8px;
+    }
+
+    .progress-fill { 
+      height: 100%; 
+      width: 45%; 
+      background: var(--primary); 
+    }
+
+    input[type="text"], input[type="email"], input[type="password"] { 
+      width: 100%; 
+      padding: 12px; 
+      margin-top: 8px;
+      border: 1px solid var(--border); 
+      border-radius: 10px; 
+      box-sizing: border-box;
+    }
+
+    h3 { margin: 0 0 15px 0; font-size: 18px; color: #1e293b; }
+    .muted-text { color: var(--muted); font-size: 13px; }
+  </style>
+</head>
+<body>
+
+<h2 style="color: #333; margin-bottom: 20px;">DevStep</h2>
+
+<div class="phone">
+  <div class="topbar">
+    <strong id="screenTitle">Login</strong>
+    <span class="muted-text" id="screenIndicator">1/5</span>
+  </div>
+
+  <section class="screen active" id="s1">
+    <div class="box">
+      <label class="muted-text">E-mail</label>
+      <input type="email" placeholder="dev@exemplo.com" />
+    </div>
+    <div class="box">
+      <label class="muted-text">Senha</label>
+      <input type="password" placeholder="••••••••" />
+    </div>
+    <div class="row">
+      <button class="btn primary" onclick="go(2)">Entrar</button>
+      <button class="btn" onclick="go(2)">Criar conta</button>
+    </div>
+  </section>
+
+  <section class="screen" id="s2">
+    <div class="box">
+      <h3>Qual seu objetivo?</h3>
+      <label class="task-item">Conseguir estágio <input type="radio" name="obj"></label>
+      <label class="task-item">Melhorar lógica <input type="radio" name="obj"></label>
+      <label class="task-item">Criar portfólio <input type="radio" name="obj"></label>
+    </div>
+    <div class="row">
+      <button class="btn" onclick="go(1)">Voltar</button>
+      <button class="btn primary" onclick="go(3)">Continuar</button>
+    </div>
+  </section>
+
+  <section class="screen" id="s3">
+    <div class="box">
+      <h3>Plano da Semana</h3>
+      
+      <div class="task-list">
+        <label class="task-item">
+          <span>Exercício de lógica</span>
+          <input type="checkbox">
+        </label>
+        
+        <label class="task-item">
+          <span>Projeto simples</span>
+          <input type="checkbox">
+        </label>
+        
+        <label class="task-item">
+          <span>Revisão</span>
+          <input type="checkbox">
+        </label>
+      </div>
+
+      <div class="progress-container">
+        <strong class="muted-text">Progresso Geral</strong>
+        <div class="progress-bg">
+          <div class="progress-fill"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <button class="btn" onclick="go(2)">Voltar</button>
+      <button class="btn primary" onclick="go(4)">Iniciar tarefa</button>
+    </div>
+  </section>
+
+  <section class="screen" id="s4">
+    <div class="box" style="text-align:center; padding: 40px 10px;">
+      <p class="muted-text">Foco atual: <strong>Exercício de lógica</strong></p>
+      <h1 style="font-size: 48px; margin: 20px 0; color: var(--primary);">25:00</h1>
+    </div>
+    <div class="row">
+      <button class="btn" onclick="go(3)">Pausar</button>
+      <button class="btn primary" onclick="go(5)">Concluir</button>
+    </div>
+  </section>
+
+  <section class="screen" id="s5">
+    <div class="box">
+      <h3>Progresso</h3>
+      <p class="muted-text">• 3 de 7 tarefas concluídas</p>
+      <div style="height: 100px; background: #f8fafc; border-radius: 8px; margin-top: 15px; display: flex; align-items: flex-end; justify-content: space-around; padding: 10px;">
+        <div style="width: 20px; height: 40%; background: var(--primary); opacity: 0.5; border-radius: 4px;"></div>
+        <div style="width: 20px; height: 70%; background: var(--primary); opacity: 0.5; border-radius: 4px;"></div>
+        <div style="width: 20px; height: 90%; background: var(--primary); border-radius: 4px;"></div>
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn primary" onclick="go(3)">Nova Meta</button>
+    </div>
+  </section>
+</div>
+
+<script>
+  const titles = {
+    1: "Login",
+    2: "Objetivo",
+    3: "Plano de Estudos",
+    4: "Modo Foco",
+    5: "Progresso"
+  };
+
+  function go(n) {
+    document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+    document.getElementById("s" + n).classList.add("active");
+    document.getElementById("screenTitle").textContent = titles[n];
+    document.getElementById("screenIndicator").textContent = `${n}/5`;
+  }
+</script>
+
+</body>
+</html>
