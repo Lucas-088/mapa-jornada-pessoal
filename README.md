@@ -54,4 +54,4 @@ Aprendi que evolução depende de constância e disciplina. Pequenos avanços di
 Preciso melhorar organização e reduzir distrações. Um plano diário simples e metas semanais claras vão me ajudar a manter consistência.
 
 ### Como me sinto em relação à minha evolução?
-Sinto que estou evoluindo de forma gradual. Mesmo sem resultados imediatos, percebo melhora na mentalidade e isso me motiva a continuar.# mapa-jornada-pessoal
+Sinto que estou evoluindo de forma gradual. Mesmo sem resultados imediatos, percebo melhora na mentalidade e isso me motiva a continuar.
